@@ -1,7 +1,7 @@
 #!/bin/bash
 
 pbcopy=pbcopy
-command -v $pbcopy &>- || pbcopy='xclip -selection clipboard'
+command -v $pbcopy &>/dev/null || pbcopy='xclip -selection clipboard'
 
 get_filter()
 {
