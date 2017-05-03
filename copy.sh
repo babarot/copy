@@ -45,7 +45,7 @@ case $lines in
         printf "$stdin" | $pbcopy
         ;;
     *)
-        filter="$(get_filter "${F:-"fzy:fzf-tmux:fzf:peco:percol:zaw"}")"
+        filter="$(get_filter "${F:-"fzf:fzy:peco:percol:zaw"}")"
         if [[ -z $filter ]]; then
             echo "No available filter command (fzf, peco, ...)" >&2
             exit 1
