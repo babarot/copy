@@ -1,5 +1,8 @@
 #!/bin/bash
 
+pbcopy=pbcopy
+command -v $pbcopy &>- || pbcopy='xclip -selection clipboard'
+
 get_filter()
 {
     local x candidates
@@ -39,7 +42,7 @@ case $lines in
         exit 1
         ;;
     1)
-        printf "$stdin" | pbcopy
+        printf "$stdin" | $pbcopy
         ;;
     *)
         filter="$(get_filter "${F:-"fzy:fzf-tmux:fzf:peco:percol:zaw"}")"
@@ -48,6 +51,6 @@ case $lines in
             exit 1
         fi
         selected="$(echo "$stdin" | eval "$filter")"
-        printf "$selected" | pbcopy
+        printf "$selected" | $pbcopy
         ;;
 esac
